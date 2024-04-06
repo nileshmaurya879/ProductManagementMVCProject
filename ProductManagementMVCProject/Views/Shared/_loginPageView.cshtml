@@ -1,0 +1,32 @@
+﻿@model ProductManagementMVCProject.Dto.LoginDto
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor accessor
+@{
+    @if (!string.IsNullOrEmpty(accessor.HttpContext.Session.GetString("useremail")))
+    {
+        <div>User Logged in @accessor.HttpContext.Session.GetString("useremail")</div>
+    }
+    else
+    {
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <form method="post" asp-controller="Account" asp-action="Login">
+                        <div class="mb-3">
+                            <label asp-for="Email" for="exampleInputEmail1" class="form-label">Email Address</label>
+                            <input asp-for="Email" type="Email" class="form-control" id="exampleInputEmail1">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a class="" id="login" asp-controller="Account" asp-action="Registration">New Registration</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+}

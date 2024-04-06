@@ -1,0 +1,19 @@
+﻿@model ProductManagementMVCProject.Dto.tblCategoryDto;
+
+<h2>Add Category:-</h2>
+<form method="post" asp-controller="Category" asp-action="AddCategory" >
+    <div class="mb-3">
+        <label for="CategoryName" asp-for="CategoryName" class="form-label">Category Name</label>
+        <input type="text" class="form-control" asp-for="CategoryName" id="CategoryName1" placeholder="Enter Name">
+        <span asp-validation-for="CategoryName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="CategoryDescription" asp-for="CategoryDescription" class="form-label">Enter Description</label>
+        <textarea class="form-control" asp-for="CategoryDescription" id="CategoryName1" rows="3"></textarea>
+        <span asp-validation-for="CategoryDescription" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Add</button>
+        <a asp-controller="Category" asp-action="GetallCetgory">Back to List</a>
+    </div>
+</form>

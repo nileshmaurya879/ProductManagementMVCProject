@@ -1,0 +1,109 @@
+﻿@using ProductManagementMVCProject.Dto;
+@model IEnumerable<ProductManagementMVCProject.Dto.tblProductDto>;
+
+<h2>Product Details:-</h2>
+<form class="d-sm-inline-flex" asp-controller="Product" asp-action="SearchProduct">
+    <input class="form-control me-2" type="search" name="searchString" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+@{
+    var cnt = 1;
+    PageModel pager = ViewBag.pager;
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th><a asp-action="SearchProduct" asp-controller="Product" asp-route-sortOrder="@TempData["sortProductName"]">
+             @if (TempData["sortProductName"] != null && TempData["sortProductName"].ToString() == "productName")
+             {
+                   <span>&#8595;</span> <!-- Down arrow -->
+             }
+             else if (TempData["sortProductName"] != null && TempData["sortProductName"].ToString() == "productName_desc")
+             {
+                  <span>&#8593;</span> <!-- Up arrow -->
+             }
+             else
+             {
+                   <span>&#8595;</span> <!-- Down arrow -->
+             }
+             Product Name
+            </a></th>
+            <th><a asp-action="SearchProduct" asp-controller="Product" asp-route-sortOrder="@TempData["categoryName"]">
+             @if (TempData["categoryName"] != null && TempData["categoryName"].ToString() == "categoryName")
+             {
+                 <span>&#8595;</span> <!-- Down arrow -->
+             }
+             else if (TempData["categoryName"] != null && TempData["categoryName"].ToString() == "categoryName_desc")
+             {
+                 <span>&#8593;</span> <!-- Up arrow -->
+             }
+             else
+             {
+                 <span>&#8595;</span> <!-- Down arrow -->
+             }
+             Category Name</a></th>
+            <th><a asp-action="SearchProduct" asp-controller="Product" asp-route-sortOrder="@TempData["productPrice"]">
+            @if (TempData["productPrice"] != null && TempData["productPrice"].ToString() == "productPrice")
+            {
+                <span>&#8595;</span> <!-- Down arrow -->
+            }
+            else if (TempData["productPrice"] != null && TempData["productPrice"].ToString() == "productPrice_desc")
+            {
+                <span>&#8593;</span> <!-- Up arrow -->
+            }
+            else
+            {
+                <span>&#8595;</span> <!-- Down arrow -->
+            }
+             Product Price</a></th>
+            <th><a asp-action="SearchProduct" asp-controller="Product" asp-route-sortOrder="@TempData["productDescription"]">
+             @if (TempData["productDescription"] != null && TempData["productDescription"].ToString() == "productDescription")
+             {
+                 <span>&#8595;</span> <!-- Down arrow -->
+             }
+             else if (TempData["productDescription"] != null && TempData["productDescription"].ToString() == "productDescription_desc")
+             {
+                 <span>&#8593;</span> <!-- Up arrow -->
+             }
+             else
+             {
+                 <span>&#8595;</span> <!-- Down arrow -->
+             }
+            Product Description</a></th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@cnt</th>
+                <td>@item.ProductName</td>
+                <td>@item.Category?.CategoryName</td>
+                <td>@item.ProductPrice</td>
+                <td class="description-cell">@item.ProductDescription</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Product" asp-action="UpdateProducte" asp-route-id="@item.ProductId">Update</a>
+                    <a class="btn btn-primary" asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@item.ProductId" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
+                </td>
+            </tr>
+            cnt++;
+        }
+    </tbody>
+</table>
+
+<div class="row">
+    <div class="col-12">
+        <partial name="_topBar" model="pager" />
+    </div>
+</div>
+<a class="btn btn-primary" asp-controller="Product" asp-action="AddProduct">Add Product</a>
+<style>
+    .description-cell {
+        max-width: 190px; /* Adjust the max-width as needed */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>

@@ -1,0 +1,32 @@
+﻿@model ProductManagementMVCProject.Dto.tblProductDto;
+
+<h2>Update Product:-</h2>
+<form method="post" asp-controller="Product" asp-action="UpdateProduct">
+    <div class="mb-3">
+        <label for="ProductName" asp-for="ProductName" class="form-label">Product Name</label>
+        <input type="text" class="form-control" asp-for="ProductName" id="ProductName" placeholder="Enter Product Name">
+        <span asp-validation-for="ProductName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="ProductPrice" asp-for="ProductPrice" class="form-label">Enter Price</label>
+        <input type="text" class="form-control" asp-for="ProductPrice" id="ProductPrice" placeholder="Enter Product Price">
+        <span asp-validation-for="ProductPrice" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label mt-4">Category ID</label>
+        <select class="form-control" asp-for="CategoryId" asp-items="ViewBag.selecteCategoryData">
+            <option value="0">Selecte Category</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="CategoryDescription" asp-for="ProductDescription" class="form-label">Enter Description</label>
+        <textarea class="form-control" asp-for="ProductDescription" id="CategoryName1" rows="3"></textarea>
+        <span asp-validation-for="ProductDescription" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">Update</button>
+        <a asp-controller="Product" asp-action="GetAllProduct">Back to List</a>
+    </div>
+    <input type="hidden" asp-for="ProductId" />
+</form>

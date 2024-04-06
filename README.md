@@ -1,0 +1,1 @@
+Scaffold-DbContext "Name=DemoDefault" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -f

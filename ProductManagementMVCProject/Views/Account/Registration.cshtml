@@ -1,0 +1,64 @@
+﻿@model ProductManagementMVCProject.Dto.tblUserDto
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <h3>Registration Form</h3>
+            </div>
+            <hr />
+            <form method="post" asp-controller="Account">
+                <div class="mb-3">
+                    <label asp-for="FirstName" class="form-label">First Name</label>
+                    <input asp-for="FirstName" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter First Name">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="LastName" class="form-label">LastName</label>
+                    <input type="text" asp-for="LastName" class="form-control" id="exampleFormControlInput2" placeholder="Enter Last Name">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input type="text" asp-for="Email" class="form-control" id="exampleFormControlInput3" placeholder="Enter the Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="UserPassword" class="form-label">Password</label>
+                    <input type="text" asp-for="UserPassword" class="form-control" id="exampleFormControlInput4" placeholder="Enter the User Password">
+                    <span asp-validation-for="UserPassword" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ConfirmPassword" class="form-label">ConfirmPassword</label>
+                    <input type="text" asp-for="ConfirmPassword" class="form-control" id="exampleFormControlInput5" placeholder="Enter the Confirm Password">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button id="liveToastBtn" class="btn btn-primary" type="submit">
+                    ADD
+                </button>
+            </form>
+           @*  <div class="hide position-fixed top-0 end-0" style="z-index: 11; border-radius:2px;padding-top:4px; padding-right:4px; color:white;">
+                <div id="liveToast" class="toast hide bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-body">
+                        Hello, world! This is a toast message.
+                          <button type="button" class="btn-close top-0 end-0" data-bs-dismiss="toast" aria-label="Close"></button> 
+                    </div>
+                </div>
+            </div> *@
+        </div>
+    </div>
+</div>
+
+@* <script>
+    function displayToastMessage(){
+        window.alert("test")
+        var btn = document.getElementById("liveToastBtn");
+        var toast = document.getElementById("liveToast");
+        var bsToast = new bootstrap.Toast(toast);
+        bsToast.show();
+    }
+    document.getElementById("liveToastBtn").addEventListener("click", function (event) {
+        //event.preventDefault(); // Prevent the form from submitting
+        displayToastMessage(); // Call the function to show the toast
+    });
+</script> *@

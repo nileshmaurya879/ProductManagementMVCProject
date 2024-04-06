@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor accessor
+@if (!string.IsNullOrEmpty(accessor.HttpContext.Session.GetString("useremail")))
+{
+    <div class="nav-item">
+        <div>User Logged in @accessor.HttpContext.Session.GetString("useremail") <span><a id="logout" asp-controller="Account" asp-action="LogOut">LogOut</a></span></div>
+    </div>
+}
+else
+{
+    <div class="nav-item">
+        <a class="nav-link text-dark" id="register" asp-area="" asp-controller="Account" asp-action="Registration">Sign Up</a>
+    </div>
+    <div class="nav-item">
+        <a class="nav-link text-dark" id="login" asp-controller="Account" asp-action="Login">Sign in</a>
+    </div>
+}
+

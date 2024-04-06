@@ -1,0 +1,17 @@
+﻿@model ProductManagementMVCProject.Dto.PageModel
+
+<div class="container mt-1">
+    <ul class="pagination justify-content-end">
+        @for (var pge = Model.StartPage; pge <= Model.EndPage; pge++)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action=""
+                    asp-route-pg="@pge"
+                    asp-route-pageSize="@Model.PageSize"
+                    >
+                    @pge
+                </a>
+            </li>            
+        }
+    </ul>
+</div>
